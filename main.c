@@ -10,9 +10,9 @@ static char input[2048];
 
 void	handle_input(char inp[2048])
 {
-	if (!strcmp(input, "exit") || !strcmp(input, "exit"))
+	if (!strcmp(inp, "exit\n") || !strcmp(inp, "quit\n"))
 	{
-		puts("Bye!\n");
+		puts("Bye!");
 		exit(0);
 	}
 }
@@ -28,13 +28,12 @@ int main(int ac, char **av)
 	{
 		/* Output our prompt */
 		fputs("lispy> ", stdout);
-
 		/* Read a line of user input of maximum size 2048 */
 		fgets(input, 2048, stdin);
+		handle_input(input);
 
 		/* Echo input back to user */
 		printf("No you're a %s", input);
 	}
-
 	return (0);
 }
